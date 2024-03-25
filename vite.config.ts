@@ -16,7 +16,7 @@ export default defineConfig({
       name: "remoteHabitsMfe",
       filename: "remoteHabitsMfe.js",
       exposes: {
-        "./App": "./src/App.vue",
+        "./HabitsMfe": "./src/HabitsMfe",
       }
     }),
   ],
