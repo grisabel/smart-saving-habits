@@ -9,7 +9,7 @@ export class HabitsFactoryRepository {
 
   static getInstance(): HabitsInterfaceRepository {
     if (!HabitsFactoryRepository.instance) {
-      if ( import.meta.env.mode === "production") {
+      if ( import.meta.env.VITE_MODE === "production") {
         const http = HttpFactory.getInstance();
         HabitsFactoryRepository.instance = new HabitsHttpRepository(http);
       } else {

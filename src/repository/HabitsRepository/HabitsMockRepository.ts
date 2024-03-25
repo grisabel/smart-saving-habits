@@ -4,7 +4,7 @@ import { HabitsHttpRepository } from "./HabitsHttpRepository";
 const httpMock = HttpMockAdapterFactory.getInstance();
 
 httpMock.onGet(
-  import.meta.env.BASE_URL + "/financial-control/habits/alimentation",
+  import.meta.env.VITE_BASE_URL + "/financial-control/habits/alimentation",
   () => {
     return Promise.resolve({
       status: 200,
@@ -25,7 +25,7 @@ httpMock.onGet(
   }
 );
 httpMock.onGet(
-  import.meta.env.BASE_URL + "/financial-control/habits/restaurant",
+  import.meta.env.VITE_BASE_URL + "/financial-control/habits/restaurant",
   () => {
     return Promise.resolve({
       status: 200,
@@ -62,7 +62,7 @@ httpMock.onGet(
   }
 );
 httpMock.onGet(
-  import.meta.env.BASE_URL + "/financial-control/habits/ant-expenses",
+  import.meta.env.VITE_BASE_URL + "/financial-control/habits/ant-expenses",
   () => {
     return Promise.resolve({
       status: 200,
@@ -100,7 +100,7 @@ httpMock.onGet(
 );
 
 httpMock.onGet(
-  import.meta.env.BASE_URL + "/financial-control/habits/vehicle",
+  import.meta.env.VITE_BASE_URL + "/financial-control/habits/vehicle",
   () => {
     return Promise.resolve({
       status: 200,

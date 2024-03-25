@@ -35,7 +35,7 @@ export class HttpService implements HttpInterfaceService {
   private logout() {
     window.localStorage.removeItem(LOCAL_STORAGE_KEYS.accessToken);
     window.localStorage.removeItem(LOCAL_STORAGE_KEYS.refreshToken);
-    document.location.href = import.meta.env.logoutUrl;
+    document.location.href = import.meta.env.VITE_LOGOUT_URL;
   }
 
   setAccessToken = (value: string | null) => {

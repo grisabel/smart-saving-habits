@@ -4,6 +4,24 @@
     import CarCard from './components/CarCard.vue'
     import AntCard from './components/AntCard.vue'
     import RestaurantCard from './components/RestaurantCard.vue'
+
+    import { onMounted } from 'vue';
+    import { LOCAL_STORAGE_KEYS } from './utils/Http/HttpService'
+
+    onMounted(() => {
+      const queryParams = new URLSearchParams(window.location.search);
+      const accessToken = queryParams.get('accessToken');
+      const refreshToken = queryParams.get('refreshToken');
+
+      if (accessToken && refreshToken) {
+        window.localStorage.setItem(
+          LOCAL_STORAGE_KEYS.refreshToken,
+          refreshToken
+        );
+        window.localStorage.setItem(LOCAL_STORAGE_KEYS.accessToken, accessToken);
+      }
+    })
+
 </script>
 
 <template>

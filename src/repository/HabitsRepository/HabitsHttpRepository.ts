@@ -1,15 +1,16 @@
 import { HttpService } from "@/utils/Http/HttpService";
 import type { HabitsInterfaceRepository } from "./HabitsInterfaceRepository";
 import type { HabitResponseModel } from "./model/response/HabitResponseModel";
+import type { HttpInterfaceService } from "@/utils/Http/HttpInterfaceService";
 
 export class HabitsHttpRepository implements HabitsInterfaceRepository {
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpInterfaceService) {}
 
   _habit(url: string): Promise<HabitResponseModel> {
     return new Promise((resolve, reject) => {
       return this.http
         .get({
-          endpoint: import.meta.env.BASE_URL + url,
+          endpoint: import.meta.env.VITE_BASE_URL + url,
         })
         .then((response) => {
           try {
