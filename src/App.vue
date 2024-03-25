@@ -1,31 +1,53 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+    import CardHabits from './components/CardHabits.vue'
+    import Car from './components/icons/Car.vue'
+    import Ant from './components/icons/Ant.vue'
+    import Food from './components/icons/Food.vue'
+    import Restaurant from './components/icons/Restaurant.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <CardHabits
+    title="Alimentación"
+    description="Planifica tu despensa, prevé tu futuro: ¡Estima tu gasto mensual de alimentos!"
+    price="300€"
+  >
+    <template #icon>
+      <Food />
+    </template>
+  </CardHabits>
+  <CardHabits
+    title="Alimentación"
+    description="Planifica tu despensa, prevé tu futuro: ¡Estima tu gasto mensual de alimentos!"
+    price="300€"
+  >
+    <template #icon>
+      <Food />
+    </template>
+  </CardHabits>
+  <CardHabits
+    title="Alimentación"
+    description="Planifica tu despensa, prevé tu futuro: ¡Estima tu gasto mensual de alimentos!"
+    price="300€"
+  >
+    <template #icon>
+      <Food />
+    </template>
+  </CardHabits>
+  <CardHabits
+    title="Alimentación"
+    description="Planifica tu despensa, prevé tu futuro: ¡Estima tu gasto mensual de alimentos!"
+    price="300€"
+  >
+    <template #icon>
+      <Food />
+    </template>
+  </CardHabits>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+<style scoped>
+
 
 @media (min-width: 1024px) {
   header {
