@@ -18,13 +18,16 @@
 
         const expenseByMonth = AggregateData.byMonth(resul.transactions)
         
-        const average = expenseByMonth.reduce((acc, expense) => {
+        const suma = expenseByMonth.reduce((acc, expense) => {
           const constant = 100;
           const result = acc + expense.amount;
           return Math.round(result * constant) / constant;
         }, 0)
 
+       if(expenseByMonth.length >= 1){
+        const average = suma / expenseByMonth.length
         data.value = `${average.toFixed(2)}€`;
+       }
 
       })
       .catch((error) => {
