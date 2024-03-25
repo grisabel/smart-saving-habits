@@ -7,15 +7,26 @@
     import { HabitsFactoryRepository } from '@/repository/HabitsRepository/HabitsFactoryRepository';
     import type { HabitResponseModel } from '@/repository/HabitsRepository/model/response/HabitResponseModel';
 
+    import AggregateData from "./utils/AggregateData"
+
     const habitsRepository = HabitsFactoryRepository.getInstance();
 
     const { t } = useI18n();
-    const data = ref<HabitResponseModel | null>(null);
+    const data = ref<number | null>(null);
 
     onMounted(() => {
       habitsRepository.food().then((resul) => {
-        console.log({resul})
-        data.value = resul;
+
+        const expenseByMonth = AggregateData.byMonth(resul.transactions)
+        
+        const average = expenseByMonth.reduce((acc, expense) => {
+          const constant = 100;
+          const result = acc + expense.amount;
+          return Math.round(result * constant) / constant;
+        }, 0)
+
+        data.value = average;
+
       })
       .catch((error) => {
         console.log({error})
@@ -28,7 +39,7 @@
     <CardHabits
     :title="t(`cardHabits.foodTitle`)"
     :description="t(`cardHabits.foodDescription`)"
-    price="300€"
+    :price="data?.toFixed(2) ?? ''"
   >
     <template #icon>
       <Food />
