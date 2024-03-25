@@ -6,7 +6,6 @@ type CardHabitsMessages = {
         foodDescription: string;
         carTitle: string;
         carDescription: string;
-        carPrice: string;
         restaurantTitle: string;
         restaurantDescription: string;
         antTitle: string;
@@ -33,7 +32,6 @@ type CardHabitsMessages = {
         foodDescription: 'Plan your pantry, foresee your future: Estimate your monthly food expenses!',
         carTitle: 'Vehicle',
         carDescription: 'Roll towards economy. Discover your most intense month in vehicle expenses!',
-        carPrice: 'prueba',
         restaurantTitle: 'Restaurants',
         restaurantDescription: 'Savor your outings and control your monthly spending',
         antTitle: 'Ant Expenses',
@@ -58,7 +56,6 @@ type CardHabitsMessages = {
         foodDescription: 'Planifica tu despensa, prevé tu futuro: ¡Estima tu gasto mensual de alimentos!',
         carTitle: 'Vehículo',
         carDescription: 'Rueda hacia la economía. ¡Descubre tu mes más intenso en gastos de vehículo!',
-        carPrice: 'prueba',
         restaurantTitle: 'Restaurantes',
         restaurantDescription: '¡Saborea tus salidas y controla tu gasto mensual',
         antTitle: 'Gastos hormiga',

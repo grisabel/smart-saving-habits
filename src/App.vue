@@ -1,52 +1,16 @@
 <script setup lang="ts">
     import CardHabits from './components/CardHabits.vue'
-    import Car from './components/icons/Car.vue'
-    import Ant from './components/icons/Ant.vue'
-    import Food from './components/icons/Food.vue'
-    import Restaurant from './components/icons/Restaurant.vue'
-
-    import { useI18n } from 'vue-i18n';
-
-    const { t } = useI18n();
+    import FoodCard from './components/FoodCard.vue'
+    import CarCard from './components/CarCard.vue'
+    import AntCard from './components/AntCard.vue'
+    import RestaurantCard from './components/RestaurantCard.vue'
 </script>
 
 <template>
-  <CardHabits
-    :title="t(`cardHabits.foodTitle`)"
-    :description="t(`cardHabits.foodDescription`)"
-    price="300€"
-  >
-    <template #icon>
-      <Food />
-    </template>
-  </CardHabits>
-  <CardHabits
-    :title="t(`cardHabits.carTitle`)"
-    :description="t(`cardHabits.carDescription`)"
-    :price="`${t('cardHabits.carPrice')}/300€`"
-  >
-    <template #icon>
-      <Food />
-    </template>
-  </CardHabits>
-  <CardHabits
-    :title="t(`cardHabits.restaurantTitle`)"
-    :description="t(`cardHabits.restaurantDescription`)"
-    price="300€"
-  >
-    <template #icon>
-      <Food />
-    </template>
-  </CardHabits>
-  <CardHabits
-    :title="t(`cardHabits.antTitle`)"
-    :description="t(`cardHabits.antDescription`)"
-    price="300€"
-  >
-    <template #icon>
-      <Food />
-    </template>
-  </CardHabits>
+  <FoodCard />
+  <CarCard />
+  <RestaurantCard />
+  <AntCard />
 </template>
 
 
