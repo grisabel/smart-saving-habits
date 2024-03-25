@@ -5,7 +5,6 @@
 
     import { onMounted, ref } from 'vue';
     import { HabitsFactoryRepository } from '@/repository/HabitsRepository/HabitsFactoryRepository';
-    import type { HabitResponseModel } from '@/repository/HabitsRepository/model/response/HabitResponseModel';
 
     import AggregateData from "./utils/AggregateData"
 
