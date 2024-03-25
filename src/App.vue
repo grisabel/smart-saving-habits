@@ -4,12 +4,16 @@
     import Ant from './components/icons/Ant.vue'
     import Food from './components/icons/Food.vue'
     import Restaurant from './components/icons/Restaurant.vue'
+
+    import { useI18n } from 'vue-i18n';
+
+    const { t } = useI18n();
 </script>
 
 <template>
   <CardHabits
-    title="Alimentación"
-    description="Planifica tu despensa, prevé tu futuro: ¡Estima tu gasto mensual de alimentos!"
+    :title="t(`cardHabits.foodTitle`)"
+    :description="t(`cardHabits.foodDescription`)"
     price="300€"
   >
     <template #icon>
@@ -17,8 +21,17 @@
     </template>
   </CardHabits>
   <CardHabits
-    title="Alimentación"
-    description="Planifica tu despensa, prevé tu futuro: ¡Estima tu gasto mensual de alimentos!"
+    :title="t(`cardHabits.carTitle`)"
+    :description="t(`cardHabits.carDescription`)"
+    :price="`${t('cardHabits.carPrice')}/300€`"
+  >
+    <template #icon>
+      <Food />
+    </template>
+  </CardHabits>
+  <CardHabits
+    :title="t(`cardHabits.restaurantTitle`)"
+    :description="t(`cardHabits.restaurantDescription`)"
     price="300€"
   >
     <template #icon>
@@ -26,17 +39,8 @@
     </template>
   </CardHabits>
   <CardHabits
-    title="Alimentación"
-    description="Planifica tu despensa, prevé tu futuro: ¡Estima tu gasto mensual de alimentos!"
-    price="300€"
-  >
-    <template #icon>
-      <Food />
-    </template>
-  </CardHabits>
-  <CardHabits
-    title="Alimentación"
-    description="Planifica tu despensa, prevé tu futuro: ¡Estima tu gasto mensual de alimentos!"
+    :title="t(`cardHabits.antTitle`)"
+    :description="t(`cardHabits.antDescription`)"
     price="300€"
   >
     <template #icon>
