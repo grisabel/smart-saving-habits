@@ -98,4 +98,28 @@ httpMock.onGet(
     });
   }
 );
+
+httpMock.onGet(
+  import.meta.env.BASE_URL + "/financial-control/habits/vehicle",
+  () => {
+    return Promise.resolve({
+      status: 200,
+      response: {
+        type: "Habits_Vehicles",
+        transactions: [
+          {
+            transactionId: "da06f29c-ce7e-4ee4-9f34-7219ed531fed",
+            amount: 1000,
+            conceptId: "EXPENSE-15",
+            concept: "Vehículo",
+            date: "25/03/2024",
+            note: "itv",
+          },
+        ],
+      },
+    });
+  }
+);
+
 export class UserMockRepository extends HabitsHttpRepository {}
+

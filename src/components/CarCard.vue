@@ -14,7 +14,7 @@
     const data = ref<string>('');
 
     onMounted(() => {
-      habitsRepository.food().then((resul) => {
+      habitsRepository.vehicle().then((resul) => {
 
         const expenseByMonth = AggregateData.byMonth(resul.transactions)
         
@@ -24,7 +24,7 @@
 
         if (expensesSorted.length > 0) {
           const expenseMax = expensesSorted[0];
-          data.value = `${expenseMax.amount} (${expenseMax.date})`;
+          data.value = `${expenseMax.amount}€ (${expenseMax.date})`;
         }
 
       })

@@ -11,7 +11,7 @@
     const habitsRepository = HabitsFactoryRepository.getInstance();
 
     const { t } = useI18n();
-    const data = ref<number | null>(null);
+    const data = ref<string>('');
 
     onMounted(() => {
       habitsRepository.food().then((resul) => {
@@ -24,7 +24,7 @@
           return Math.round(result * constant) / constant;
         }, 0)
 
-        data.value = average;
+        data.value = `${average.toFixed(2)}€`;
 
       })
       .catch((error) => {
@@ -38,7 +38,7 @@
     <CardHabits
     :title="t(`cardHabits.foodTitle`)"
     :description="t(`cardHabits.foodDescription`)"
-    :price="data?.toFixed(2) ?? ''"
+    :price="data"
   >
     <template #icon>
       <Food />

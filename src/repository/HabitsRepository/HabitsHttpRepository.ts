@@ -5,11 +5,11 @@ import type { HabitResponseModel } from "./model/response/HabitResponseModel";
 export class HabitsHttpRepository implements HabitsInterfaceRepository {
   constructor(private http: HttpService) {}
 
-  food(): Promise<HabitResponseModel> {
+  _habit(url: string): Promise<HabitResponseModel> {
     return new Promise((resolve, reject) => {
       return this.http
         .get({
-          endpoint: import.meta.env.BASE_URL + "/financial-control/habits/alimentation",
+          endpoint: import.meta.env.BASE_URL + url,
         })
         .then((response) => {
           try {
@@ -35,67 +35,21 @@ export class HabitsHttpRepository implements HabitsInterfaceRepository {
           reject();
         });
     });
+  }
+
+  food(): Promise<HabitResponseModel> {
+    return this._habit("/financial-control/habits/alimentation")
+  }
+
+  vehicle(): Promise<HabitResponseModel> {
+    return this._habit("/financial-control/habits/vehicle")
+  }
+
+  ant(): Promise<HabitResponseModel> {
+    return this._habit("/financial-control/habits/ant-expenses")
   }
   restaurant(): Promise<HabitResponseModel> {
-    return new Promise((resolve, reject) => {
-      return this.http
-        .get({
-          endpoint: import.meta.env.BASE_URL + "/financial-control/habits/restaurant",
-        })
-        .then((response) => {
-          try {
-            switch (response.status) {
-              case 200:
-                resolve(response.json());
-                break;
-
-              default:
-                reject();
-                break;
-            }
-          } catch (error) {
-            console.log("Error in response.json()");
-            reject();
-          }
-        })
-        .catch((error) => {
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error
-          );
-          reject();
-        });
-    });
+    return this._habit("/financial-control/habits/restaurant")
   }
-  ant(): Promise<HabitResponseModel> {
-    return new Promise((resolve, reject) => {
-      return this.http
-        .get({
-          endpoint: import.meta.env.BASE_URL + "/financial-control/habits/ant-expenses",
-        })
-        .then((response) => {
-          try {
-            switch (response.status) {
-              case 200:
-                resolve(response.json());
-                break;
 
-              default:
-                reject();
-                break;
-            }
-          } catch (error) {
-            console.log("Error in response.json()");
-            reject();
-          }
-        })
-        .catch((error) => {
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error
-          );
-          reject();
-        });
-    });
-  }
 }
