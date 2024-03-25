@@ -11,7 +11,7 @@
     const habitsRepository = HabitsFactoryRepository.getInstance();
 
     const { t } = useI18n();
-    const data = ref<string>('');
+    const data = ref<string>('--');
 
     onMounted(() => {
       habitsRepository.vehicle().then((resul) => {

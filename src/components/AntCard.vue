@@ -11,17 +11,15 @@ const habitsRepository = HabitsFactoryRepository.getInstance();
 
 const { t } = useI18n();
 
-const numberTransaction = ref(0);
-const total = ref<string>('');
+const data = ref<string>('--');
 
 onMounted(() => {
   habitsRepository
     .ant()
     .then((resul) => {
       if (resul && resul.transactions) {
-        numberTransaction.value = resul.transactions.length;
         const suma = sumarPropiedad(resul.transactions);
-        total.value = suma.toFixed(2)
+        data.value = `${suma.toFixed(2)}€ (${resul.transactions.length})`
       }
     })
     .catch((error) => {
@@ -40,7 +38,7 @@ function sumarPropiedad(array: TransactionResponseModel[]): number {
   <CardHabits
     :title="t(`cardHabits.antTitle`)"
     :description="t(`cardHabits.antDescription`)"
-    :price="`${total}€ (${numberTransaction})`"
+    :price="data"
   >
     <template #icon>
       <Ant />
