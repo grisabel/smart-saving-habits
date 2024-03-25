@@ -20,6 +20,9 @@ export type HttpDeleteRequest = Omit<HttpRequest, "body">;
 export type HttpResponse<T> = Response;
 
 export interface HttpInterfaceService {
+
+  setAccessToken(value: string | null): void;
+
   get<T>({ endpoint, headers }: HttpGetRequest): Promise<HttpResponse<T>>;
 
   post<T>({

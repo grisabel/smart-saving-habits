@@ -5,23 +5,21 @@ import { useI18n } from "vue-i18n";
 
 import { onMounted, ref } from "vue";
 import { HabitsFactoryRepository } from "@/repository/HabitsRepository/HabitsFactoryRepository";
-import type { HabitResponseModel } from "@/repository/HabitsRepository/model/response/HabitResponseModel";
+import type { HabitResponseModel, TransactionResponseModel } from "@/repository/HabitsRepository/model/response/HabitResponseModel";
 
 const habitsRepository = HabitsFactoryRepository.getInstance();
 
 const { t } = useI18n();
 
-const data = ref<HabitResponseModel | null>(null);
-const numberTransaction = ref(0);
-const total = ref(0);
+const data = ref<string>('--');
 
 onMounted(() => {
   habitsRepository
     .restaurant()
     .then((resul) => {
       if (resul && resul.transactions) {
-        numberTransaction.value = resul.transactions.length;
-        total.value = sumarPropiedad(resul.transactions);
+        const suma = sumarPropiedad(resul.transactions);
+        data.value = `${suma.toFixed(2)}€ (${resul.transactions.length})`
       }
     })
     .catch((error) => {
@@ -29,8 +27,8 @@ onMounted(() => {
     });
 });
 
-function sumarPropiedad(array) {
-  return array.reduce((suma, objeto) => {
+function sumarPropiedad(array: TransactionResponseModel[]): number {
+  return array.reduce((suma: number, objeto) => {
     return suma + (objeto.amount || 0);
   }, 0);
 }
@@ -39,7 +37,7 @@ function sumarPropiedad(array) {
   <CardHabits
     :title="t(`cardHabits.restaurantTitle`)"
     :description="t(`cardHabits.restaurantDescription`)"
-    :price="`${total}€ (${numberTransaction})`"
+    :price="data"
   >
     <template #icon>
       <Restaurant />

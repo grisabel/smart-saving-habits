@@ -14,8 +14,33 @@ const BASE_HTTP_HEADER: BaseHttpHeader = {
   "Content-Type": "application/json",
 };
 
+export const LOCAL_STORAGE_KEYS = {
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken',
+};
+
 export class HttpService implements HttpInterfaceService {
   constructor() {}
+
+  private access_token: string | null = null;
+
+  private createAuthHeaders(): BaseHttpHeader {
+    const baseAuthHttpHeader: BaseHttpHeader = {
+      Authorization: `Bearer ${this.access_token}`,
+    };
+
+    return baseAuthHttpHeader;
+  }
+
+  private logout() {
+    window.localStorage.removeItem(LOCAL_STORAGE_KEYS.accessToken);
+    window.localStorage.removeItem(LOCAL_STORAGE_KEYS.refreshToken);
+    document.location.href = import.meta.env.VITE_LOGOUT_URL;
+  }
+
+  setAccessToken = (value: string | null) => {
+    this.access_token = value;
+  };
 
   get<T>({ endpoint, headers }: HttpGetRequest): Promise<HttpResponse<T>> {
     return fetch(endpoint, {
@@ -23,8 +48,17 @@ export class HttpService implements HttpInterfaceService {
       headers: {
         ...BASE_HTTP_HEADER,
         ...headers,
+        ...this.createAuthHeaders(),
       },
-    });
+    })
+    .then((response) => {
+      switch (response.status) {
+        case 401:
+          this.logout()
+          break;
+      }
+      return response;
+    })
   }
 
   post<T>({
@@ -37,9 +71,18 @@ export class HttpService implements HttpInterfaceService {
       headers: {
         ...BASE_HTTP_HEADER,
         ...headers,
+        ...this.createAuthHeaders(),
       },
       body: JSON.stringify(body),
-    });
+    })
+    .then((response) => {
+      switch (response.status) {
+        case 401:
+          this.logout()
+          break;
+      }
+      return response;
+    })
   }
 
   put<T>({
@@ -52,9 +95,18 @@ export class HttpService implements HttpInterfaceService {
       headers: {
         ...BASE_HTTP_HEADER,
         ...headers,
+        ...this.createAuthHeaders(),
       },
       body: JSON.stringify(body),
-    });
+    })
+    .then((response) => {
+      switch (response.status) {
+        case 401:
+          this.logout()
+          break;
+      }
+      return response;
+    })
   }
 
   patch<T>({
@@ -67,9 +119,18 @@ export class HttpService implements HttpInterfaceService {
       headers: {
         ...BASE_HTTP_HEADER,
         ...headers,
+        ...this.createAuthHeaders(),
       },
       body: JSON.stringify(body),
-    });
+    })
+    .then((response) => {
+      switch (response.status) {
+        case 401:
+          this.logout()
+          break;
+      }
+      return response;
+    })
   }
 
   delete<T>({
@@ -81,7 +142,16 @@ export class HttpService implements HttpInterfaceService {
       headers: {
         ...BASE_HTTP_HEADER,
         ...headers,
+        ...this.createAuthHeaders(),
       },
-    });
+    })
+    .then((response) => {
+      switch (response.status) {
+        case 401:
+          this.logout()
+          break;
+      }
+      return response;
+    })
   }
 }
