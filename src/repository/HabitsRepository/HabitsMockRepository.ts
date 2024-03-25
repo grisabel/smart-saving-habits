@@ -3,7 +3,7 @@ import { HabitsHttpRepository } from "./HabitsHttpRepository";
 
 const httpMock = HttpMockAdapterFactory.getInstance();
 
-httpMock.onPost(
+httpMock.onGet(
   import.meta.env.BASE_URL + "/financial-control/habits/alimentation",
   () => {
     return Promise.resolve({
