@@ -17,10 +17,7 @@ export default defineConfig({
       name: "remoteHabitsMfe",
       filename: "remoteHabitsMfe.js",
       exposes: {
-        "./HabitsMfe": {
-          import: "./src/HabitsMfe",
-          dontAppendStylesToHead: false
-        },
+        "./HabitsMfe": "./src/HabitsMfe",
       },
     }),
   ],
