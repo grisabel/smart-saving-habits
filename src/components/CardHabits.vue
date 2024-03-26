@@ -25,8 +25,7 @@
         font-style: normal;
     }
     .cardWp {
-        width: 300px;
-        min-width: 300px;
+        width: 209px;
         background-color: #FFF;
         padding: 8px;
         border-radius: 8px;
