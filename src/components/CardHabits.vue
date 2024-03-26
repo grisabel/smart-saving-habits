@@ -34,6 +34,10 @@
         font-style: normal;
         font-size: 0.75rem;
         line-height: 1.125rem; 
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .cardWp .title {
         display: flex;

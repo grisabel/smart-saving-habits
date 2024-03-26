@@ -79,7 +79,7 @@ type CardHabitsMessages = {
 const i18n = createI18n<[CardHabitsMessages], 'en' | 'es'>({
     legacy: false, 
     locale: 'en',
-    fallbackLocale: 'en',
+    fallbackLocale: 'es',
     messages,
   });
   

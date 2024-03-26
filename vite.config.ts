@@ -19,15 +19,11 @@ export default defineConfig({
       exposes: {
         "./HabitsMfe": {
           import: "./src/HabitsMfe",
-          dontAppendStylesToHead: true
+          dontAppendStylesToHead: false
         },
       },
     }),
   ],
-  build:{
-    minify:false,
-    cssCodeSplit: true,
-  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

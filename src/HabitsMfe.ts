@@ -8,14 +8,12 @@ class HabitsMfe extends HTMLElement {
     
     constructor() {
       super();
-      console.log("hola")
     }
   
     connectedCallback() {  
        try {
         this.app = createApp(App);
         this.app.use(i18n);
-        console.log({app: this.app})
         this.app.mount(this);
        } catch (error) {
         console.log({error})
