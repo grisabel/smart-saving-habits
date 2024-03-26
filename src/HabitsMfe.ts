@@ -15,6 +15,10 @@ class HabitsMfe extends HTMLElement {
         this.app = createApp(App);
         this.app.use(i18n);
         this.app.mount(this);
+
+        let lang = window.sessionStorage.getItem('language') || 'es';
+        // @ts-ignore
+        i18n.global.locale.value = lang;
        } catch (error) {
         console.log({error})
        }
