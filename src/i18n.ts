@@ -33,7 +33,7 @@ type CardHabitsMessages = {
         carTitle: 'Vehicle',
         carDescription: 'Roll towards economy. Discover your most intense month in vehicle expenses!',
         restaurantTitle: 'Restaurants',
-        restaurantDescription: 'Savor your outings and control your monthly spending',
+        restaurantDescription: 'Savor your outings and control your monthly spending!',
         antTitle: 'Ant Expenses',
         antDescription: 'Hunt down your small expenses, achieve big savings!',
         january: 'January',
