@@ -15,8 +15,12 @@
 
     onMounted(() => {
       const queryParams = new URLSearchParams(window.location.search);
-      const accessToken = queryParams.get('accessToken');
-      const refreshToken = queryParams.get('refreshToken');
+      const accessToken = queryParams.get("accessToken") ||  window.localStorage.getItem(
+        LOCAL_STORAGE_KEYS.accessToken,
+      );
+      const refreshToken = queryParams.get("refreshToken") ||  window.localStorage.getItem(
+        LOCAL_STORAGE_KEYS.refreshToken,
+      );
 
       if (accessToken && refreshToken) {
         window.localStorage.setItem(
@@ -27,6 +31,7 @@
       }
 
       http.setAccessToken(accessToken)
+      // TODO
 
       isReady.value = true
     })
@@ -52,6 +57,7 @@
     background-color: transparent;
 
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
   }
