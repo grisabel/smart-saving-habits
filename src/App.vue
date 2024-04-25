@@ -57,6 +57,7 @@
     background-color: transparent;
 
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
   }
